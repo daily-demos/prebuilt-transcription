@@ -3,12 +3,7 @@ import styles from "../styles/Transcription.module.css";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { VariableSizeList as List } from "react-window";
-
-interface transcriptMsg {
-  name: string;
-  text: string;
-  timestamp: string;
-}
+import { transcriptMsg } from "../pages/[domain]/[room]";
 
 type Props = {
   callFrame: DailyCall | undefined;
@@ -26,6 +21,7 @@ const Transcription = ({ callFrame, isTranscribing, newMsg, owner }: Props) => {
   /*
     Toggle starting and stopping transcription
   */
+
   async function startTranscription() {
     callFrame?.startTranscription();
   }

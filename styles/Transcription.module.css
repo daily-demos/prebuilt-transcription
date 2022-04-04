@@ -9,13 +9,13 @@
 }
 
 .transcript {
-  padding-left: 1em;
+  padding-left: 1rem;
 }
 
 .buttons {
   display: grid;
   align-content: center;
-  padding: 1em;
+  padding: 1rem;
   border-right: 1px solid var(--dark-blue-border);
 }
 
@@ -24,8 +24,8 @@
   font-size: 12px;
   text-align: center;
   border-radius: 8px;
-  margin-bottom: 0.25em;
-  margin-top: 0.25em;
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
   border: 1px solid var(--turquoise);
   background-color: var(--turquoise);
   color: #1f2d3d;
@@ -45,7 +45,7 @@
   }
   .buttons {
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 0.5em;
+    grid-column-gap: 0.5rem;
     height: 4vh;
     border-right: none;
   }

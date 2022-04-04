@@ -1,4 +1,7 @@
-import DailyIframe, { DailyCall } from "@daily-co/daily-js";
+import DailyIframe, {
+  DailyCall,
+  DailyEventObjectAppMessage,
+} from "@daily-co/daily-js";
 import type { NextPage } from "next";
 import CallFrame from "../../components/CallFrame";
 import Head from "next/head";
@@ -8,12 +11,13 @@ import Transcription from "../../components/Transcription";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+export interface transcriptMsg {
+  name: string;
+  text: string;
+  timestamp: string;
+}
+
 const Room: NextPage = ({}) => {
-  interface transcriptMsg {
-    name: string;
-    text: string;
-    timestamp: string;
-  }
   const router = useRouter();
   const { domain, room, t } = router.query;
   const [callFrame, setCallFrame] = useState<DailyCall>();
@@ -38,6 +42,7 @@ const Room: NextPage = ({}) => {
   /*
     Set up the Daily call and event listeners on page load
   */
+
   const startCall = useCallback(() => {
     const iframe = document.getElementById("callFrame");
     const newCallFrame = DailyIframe.wrap(iframe as HTMLIFrameElement, {
@@ -62,27 +67,31 @@ const Room: NextPage = ({}) => {
       setIsTranscribing(false);
     });
 
-    newCallFrame.on("app-message", (msg: any) => {
-      if (msg?.fromId === "transcription" && msg.data?.is_final) {
-        const local = newCallFrame.participants().local;
-        const name: string =
-          local.session_id === msg.data.session_id
-            ? local.user_name
-            : newCallFrame.participants()[msg.data.session_id].user_name;
-        const text: string = msg.data.text;
-        const timestamp: string = msg.data.timestamp;
+    newCallFrame.on(
+      "app-message",
+      (msg: DailyEventObjectAppMessage | undefined) => {
+        const data = msg?.data;
+        if (msg?.fromId === "transcription" && data?.is_final) {
+          const local = newCallFrame.participants().local;
+          const name: string =
+            local.session_id === data.session_id
+              ? local.user_name
+              : newCallFrame.participants()[data.session_id].user_name;
+          const text: string = data.text;
+          const timestamp: string = data.timestamp;
 
-        if (name.length && text.length && timestamp.length) {
-          setNewMsg({ name, text, timestamp });
+          if (name.length && text.length && timestamp.length) {
+            setNewMsg({ name, text, timestamp });
+          }
+          // Let late-joiners know that transcription is running --
+          // Ideally this would be more robust, because transcription
+          // could be running but no one has said anything for a while
+          // and the state would not update. For the purposes of this
+          // demo, we'll just do this.
+          setIsTranscribing(true);
         }
-        // Let late-joiners know that transcription is running --
-        // Ideally this would be more robust, because transcription
-        // could be running but no one has said anything for a while
-        // and the state would not update. For the purposes of this
-        // demo, we'll just do this.
-        setIsTranscribing(true);
       }
-    });
+    );
   }, [url]);
 
   useEffect(() => {
@@ -92,10 +101,11 @@ const Room: NextPage = ({}) => {
   /*
     Return embedded Daily call with transcription section
   */
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>🎙️ Daily MC Mode 🎙️</title>
+        <title>🎙️ Daily Prebuilt + Transcription 🎙️</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.png" />
       </Head>

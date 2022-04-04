@@ -35,8 +35,8 @@ a {
 button {
   font-size: 12px;
   border-radius: 8px;
-  margin-bottom: 0.25em;
-  margin-top: 0.25em;
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
   border: 1px solid var(--turquoise);
   background-color: var(--turquoise);
   color: #1f2d3d;

@@ -12,7 +12,9 @@ const Header = ({ isTranscribing, owner, token }: Props) => {
     <header className={styles.header}>
       <div className={styles.headerSection}>
         <Image src="/logo.svg" alt="Daily logo" width="60" height="24" />
-        <span className={styles.title}>🎙️ Daily MC Mode 🎙️</span>
+        <span className={styles.title}>
+          🎙️ Daily Prebuilt + Transcription 🎙️
+        </span>
         {token && (
           <span className={styles.tokenStatus}>
             <button>Token</button>
