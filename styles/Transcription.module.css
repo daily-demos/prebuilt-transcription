@@ -33,6 +33,13 @@
   cursor: pointer;
 }
 
+.buttons > .notOwner {
+  background-color: var(--grey);
+  border: 1px solid var(--grey);
+  cursor: default;
+  pointer-events: none;
+}
+
 .timestamp {
   color: var(--dark-grey);
   float: right;

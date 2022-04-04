@@ -121,20 +121,17 @@ const Transcription = ({ callFrame, isTranscribing, newMsg, owner }: Props) => {
   return (
     <section className={styles.transcription}>
       <div className={styles.buttons}>
-        {owner && (
-          <>
-            <a
-              onClick={() => {
-                isTranscribing ? stopTranscription() : startTranscription();
-              }}
-            >
-              {isTranscribing ? "Stop transcribing" : "Start transcribing"}
-            </a>
-            <a href={chatFile} download="transcript.txt">
-              Download Transcript
-            </a>
-          </>
-        )}
+        <a
+          className={owner ? "" : styles.notOwner}
+          onClick={() => {
+            isTranscribing ? stopTranscription() : startTranscription();
+          }}
+        >
+          {isTranscribing ? "Stop transcribing" : "Start transcribing"}
+        </a>
+        <a href={chatFile} download="transcript.txt">
+          Download Transcript
+        </a>
       </div>
       <div id="transcript" className={styles.transcript}>
         <AutoSizer>
