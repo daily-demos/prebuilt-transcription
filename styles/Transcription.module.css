@@ -19,6 +19,11 @@
   border-right: 1px solid var(--dark-blue-border);
 }
 
+.buttons span {
+  font-size: 0.75rem;
+}
+
+.buttons > button,
 .buttons > a {
   float: right;
   font-size: 12px;
@@ -33,7 +38,11 @@
   cursor: pointer;
 }
 
-.buttons > .notOwner {
+.buttons > a {
+  text-decoration: none;
+}
+
+.buttons > button:disabled {
   background-color: var(--grey);
   border: 1px solid var(--grey);
   cursor: default;
@@ -46,7 +55,7 @@
 }
 
 @media all and (max-width: 576px) {
-  .transcriptionBlock {
+  .transcription {
     grid-template-columns: auto;
     max-height: none;
   }

@@ -11,11 +11,12 @@ const Home: NextPage = ({}) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Header isTranscribing={false} owner={false} token={false} />
-      <main>
+      <main className="index">
         <h1>🎙️ Daily Prebuilt + Transcription 🎙️</h1>
         <p>Expected URL path: /your-domain/your-room-name-here</p>
         <p>
-          To join as owner, pass in <code>?t=TOKEN</code> to the end of your URL
+          To join as owner and start transcription, you must pass in{" "}
+          <code>?t=TOKEN</code> to the end of your URL
         </p>
       </main>
     </div>

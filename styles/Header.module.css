@@ -3,6 +3,7 @@
   height: 5vh;
   max-height: 5vh;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--dark-blue-border);
@@ -29,19 +30,34 @@ a.main {
 
 .headerSection {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
-.headerSection span button,
-.headerSection span button:hover {
+.headerSection div span {
   margin: 0;
   border: 0;
   box-shadow: none;
-  cursor: auto;
+  cursor: default;
   margin-left: 0.2rem;
   margin-right: 0.2rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  border-radius: 2rem;
+  border: 2px solid var(--turquoise);
+  line-break: strict;
 }
 
-.alertStatus button {
-  background-color: #ff9254;
+.headerSection div .alertStatus {
+  border: 2px solid #ff9254;
+}
+
+@media all and (max-width: 576px) {
+  .header {
+    height: 8vh;
+    max-height: 8vh;
+  }
+  .flags {
+    margin-top: 0.5rem;
+  }
 }

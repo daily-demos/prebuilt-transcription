@@ -19,8 +19,7 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: var(--dark-blue);
 }
 
 * {
@@ -30,6 +29,10 @@ a {
 .main {
   display: grid;
   grid-template-columns: 1;
+}
+
+.index {
+  padding: 0rem 1rem;
 }
 
 button {

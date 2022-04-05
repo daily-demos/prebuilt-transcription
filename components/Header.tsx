@@ -15,29 +15,19 @@ const Header = ({ isTranscribing, owner, token }: Props) => {
         <span className={styles.title}>
           🎙️ Daily Prebuilt + Transcription 🎙️
         </span>
-        {token ? (
-          <span>
-            <button>Token</button>
-          </span>
-        ) : (
-          <span className={styles.alertStatus}>
-            <button>No token</button>
-          </span>
-        )}
-        {owner ? (
-          <span>
-            <button>Owner</button>
-          </span>
-        ) : (
-          <span className={styles.alertStatus}>
-            <button>Not owner</button>
-          </span>
-        )}
-        {isTranscribing && (
-          <span>
-            <button>Transcribing</button>
-          </span>
-        )}
+        <div className={styles.flags}>
+          {token ? (
+            <span>Token</span>
+          ) : (
+            <span className={styles.alertStatus}>No token</span>
+          )}
+          {owner ? (
+            <span>Owner</span>
+          ) : (
+            <span className={styles.alertStatus}>Not owner</span>
+          )}
+          {isTranscribing && <span>Transcribing</span>}
+        </div>
       </div>
     </header>
   );

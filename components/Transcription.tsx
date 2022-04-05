@@ -14,7 +14,7 @@ type Props = {
 
 const Transcription = ({ callFrame, isTranscribing, newMsg, owner }: Props) => {
   const [messages, setMessage] = useState<Array<transcriptMsg>>([]);
-  const [chatFile, setChatFile] = useState<string>("");
+  const [transcriptFile, setTranscriptFile] = useState<string>("");
   const listRef = useRef<any>({});
   const rowRef = useRef<any>({});
 
@@ -35,7 +35,7 @@ const Transcription = ({ callFrame, isTranscribing, newMsg, owner }: Props) => {
   */
 
   useEffect(() => {
-    setChatFile(
+    setTranscriptFile(
       window.URL.createObjectURL(
         new Blob(
           messages.map((msg) =>
@@ -121,15 +121,24 @@ const Transcription = ({ callFrame, isTranscribing, newMsg, owner }: Props) => {
   return (
     <section className={styles.transcription}>
       <div className={styles.buttons}>
-        <a
-          className={owner ? "" : styles.notOwner}
+        {!owner && (
+          <span>
+            A room owner{" "}
+            <a href="https://docs.daily.co/reference/rest-api/meeting-tokens#main">
+              meeting token
+            </a>{" "}
+            is required to start transcription.
+          </span>
+        )}
+        <button
+          disabled={!owner}
           onClick={() => {
             isTranscribing ? stopTranscription() : startTranscription();
           }}
         >
           {isTranscribing ? "Stop transcribing" : "Start transcribing"}
-        </a>
-        <a href={chatFile} download="transcript.txt">
+        </button>
+        <a href={transcriptFile} download="transcript.txt">
           Download Transcript
         </a>
       </div>
