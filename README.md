@@ -2,9 +2,9 @@
 
 [Daily Prebuilt](https://daily.co/prebuilt) embedded into a [Next.js](https://nextjs.org/) app with live transcription.
 
-You can check out the live demo [here](https://daily-prebuilt-transcription.vercel.app). Use the following URL path pattern to test with your Daily domain and room: `https://daily-prebuilt-transcription.vercel.app/your-domain/your-room-name-here`
+You can check out the live demo [here](https://prebuilt-transcription.vercel.app). Use the following URL path pattern to test with your Daily domain and room: `https://prebuilt-transcription.vercel.app/your-domain/your-room-name-here`
 
-To join as owner, pass in `?t=TOKEN` to the end of your URL
+To join as owner, pass in `?t=TOKEN` to the end of your URL.
 
 ## Requirements
 
@@ -59,4 +59,4 @@ Locally, open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## Deploy your own on Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/daily-co/clone-flow?repository-url=https%3A%2F%2Fgithub.com%2Fdaily-demos%2Fdaily-prebuilt-transcription.git&project-name=daily-prebuilt-transcription&repo-name=daily-prebuilt-transcription
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/daily-co/clone-flow?repository-url=https%3A%2F%2Fgithub.com%2Fdaily-demos%2Fdaily-prebuilt-transcription.git&project-name=daily-prebuilt-transcription&repo-name=daily-prebuilt-transcription)
