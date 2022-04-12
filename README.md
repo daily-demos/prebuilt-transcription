@@ -6,6 +6,8 @@ You can check out the live demo [here](https://prebuilt-transcription.vercel.app
 
 To join as owner, pass in `?t=TOKEN` to the end of your URL.
 
+![Live demonstration of transcribing video call audio](example.gif)
+
 ## Requirements
 
 To use this demo, you will first need to [create a Daily account](https://dashboard.daily.co/signup) and a [Deepgram account](https://console.deepgram.com/signup). Once you have an account and are logged into the [Daily Dashboard](https://dashboard.daily.co), you can [create a new Daily room](https://dashboard.daily.co/rooms/create) or use our [REST API](https://docs.daily.co/reference/rest-api/rooms).
