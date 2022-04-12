@@ -44,6 +44,8 @@ const Room: NextPage = ({}) => {
   */
 
   const startCall = useCallback(() => {
+    if (!url) return;
+
     const iframe = document.getElementById("callFrame");
     const newCallFrame = DailyIframe.wrap(iframe as HTMLIFrameElement, {
       showLeaveButton: true,
@@ -96,7 +98,8 @@ const Room: NextPage = ({}) => {
 
   useEffect(() => {
     startCall();
-  }, [startCall]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url]);
 
   /*
     Return embedded Daily call with transcription section
