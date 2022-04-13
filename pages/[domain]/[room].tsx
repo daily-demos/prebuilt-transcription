@@ -1,6 +1,7 @@
 import DailyIframe, {
   DailyCall,
   DailyEventObjectAppMessage,
+  DailyEventObjectFatalError,
 } from "@daily-co/daily-js";
 import type { NextPage } from "next";
 import CallFrame from "../../components/CallFrame";
@@ -26,6 +27,7 @@ const Room: NextPage = ({}) => {
     text: "",
     timestamp: "",
   });
+  const [hasError, setHasError] = useState<string>("");
   const [isOwner, setIsOwner] = useState<boolean>(false);
   const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
 
@@ -50,8 +52,16 @@ const Room: NextPage = ({}) => {
     });
     setCallFrame(newCallFrame);
 
-    newCallFrame.join({
-      url: url,
+    try {
+      newCallFrame.join({
+        url: url,
+      });
+    } catch {
+      throw new Error("Could not join. Does this room exist?");
+    }
+    newCallFrame.on("error", (ev: DailyEventObjectFatalError | undefined) => {
+      setHasError(ev?.errorMsg ?? "Something went wrong");
+      console.log(`ev: ${JSON.stringify(ev)}`);
     });
 
     newCallFrame.on("joined-meeting", (ev) => {
@@ -110,6 +120,7 @@ const Room: NextPage = ({}) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Header
+        hasError={hasError}
         isTranscribing={isTranscribing}
         owner={isOwner}
         token={hasToken}
