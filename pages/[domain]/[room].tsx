@@ -27,7 +27,7 @@ const Room: NextPage = ({}) => {
     text: "",
     timestamp: "",
   });
-  const [hasError, setHasError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [isOwner, setIsOwner] = useState<boolean>(false);
   const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
 
@@ -60,7 +60,7 @@ const Room: NextPage = ({}) => {
       throw new Error("Could not join. Does this room exist?");
     }
     newCallFrame.on("error", (ev: DailyEventObjectFatalError | undefined) => {
-      setHasError(ev?.errorMsg ?? "Something went wrong");
+      setError(ev?.errorMsg ?? "Something went wrong");
       console.log(`ev: ${JSON.stringify(ev)}`);
     });
 
@@ -120,7 +120,7 @@ const Room: NextPage = ({}) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Header
-        hasError={hasError}
+        error={error}
         isTranscribing={isTranscribing}
         owner={isOwner}
         token={hasToken}

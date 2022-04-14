@@ -2,13 +2,13 @@ import Image from "next/image";
 import styles from "../styles/Header.module.css";
 
 type Props = {
-  hasError: string;
+  error: string;
   isTranscribing: boolean;
   owner: boolean;
   token: boolean;
 };
 
-const Header = ({ hasError, isTranscribing, owner, token }: Props) => {
+const Header = ({ error, isTranscribing, owner, token }: Props) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerSection}>
@@ -28,7 +28,7 @@ const Header = ({ hasError, isTranscribing, owner, token }: Props) => {
             <span className={styles.alertStatus}>Not owner</span>
           )}
           {isTranscribing && <span>Transcribing</span>}
-          {hasError && <span className={styles.errorStatus}>{hasError}</span>}
+          {error && <span className={styles.errorStatus}>{error}</span>}
         </div>
       </div>
     </header>

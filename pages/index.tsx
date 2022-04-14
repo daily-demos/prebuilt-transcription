@@ -66,12 +66,7 @@ const Home: NextPage = ({}) => {
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Header
-        hasError={""}
-        isTranscribing={false}
-        owner={false}
-        token={false}
-      />
+      <Header error={""} isTranscribing={false} owner={false} token={false} />
       <main className="index">
         <h1>🎙️ Daily Prebuilt + Transcription 🎙️</h1>
         <p>
