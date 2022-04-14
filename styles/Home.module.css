@@ -12,8 +12,9 @@
 .linkGroup {
   display: grid;
   grid-gap: 1rem;
-  max-width: 25rem;
+  max-width: 30rem;
   grid-template-columns: auto;
+  word-break: break-all;
 }
 
 .linkGroup div a {
