@@ -15,7 +15,6 @@ function Form() {
     ev.preventDefault(); // don't redirect the page
     const source = ev.target;
     const link = `${window.location.href}${source.domain.value}/${source.room.value}?t=${source.token.value}`;
-    console.log(link);
     setIsSubmitted(true);
     setLink(link);
   };

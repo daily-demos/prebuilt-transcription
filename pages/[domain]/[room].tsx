@@ -52,16 +52,12 @@ const Room: NextPage = ({}) => {
     });
     setCallFrame(newCallFrame);
 
-    try {
-      newCallFrame.join({
-        url: url,
-      });
-    } catch {
-      throw new Error("Could not join. Does this room exist?");
-    }
+    newCallFrame.join({
+      url: url,
+    });
+
     newCallFrame.on("error", (ev: DailyEventObjectFatalError | undefined) => {
       setError(ev?.errorMsg ?? "Something went wrong");
-      console.log(`ev: ${JSON.stringify(ev)}`);
     });
 
     newCallFrame.on("joined-meeting", (ev) => {
