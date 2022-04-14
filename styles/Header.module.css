@@ -52,6 +52,10 @@ a.main {
   border: 2px solid #ff9254;
 }
 
+.headerSection div .errorStatus {
+  border: 2px solid red;
+}
+
 @media all and (max-width: 576px) {
   .header {
     height: 8vh;
